@@ -1,0 +1,70 @@
+/* Session 4 — the cards and cart from Session 3, plus network controls, states and the two logs. */
+
+.concept code { font-size: 13px; background: var(--surface-2); padding: 1px 6px; border-radius: 6px; }
+
+/* ---------- toolbar ---------- */
+.toolbar input[type="search"] { flex: 1 1 260px; }
+.network-controls { margin-top: -8px; }
+.toggle {
+  display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px;
+  background: #fff; border: 1px solid #d5dbe8; font-size: 13px; font-weight: 600; color: var(--ink-2); cursor: pointer;
+}
+.toolbar .toggle input { min-width: 0; padding: 0; margin: 0; accent-color: var(--accent); } /* undo .toolbar input */
+.toggle:has(input:checked) { border-color: var(--accent); color: var(--ink); background: #f3f0ff; }
+
+/* ---------- cards (Session 3) ---------- */
+.card.is-out .thumb { opacity: .55; }
+.card.in-cart { box-shadow: 0 0 0 2px var(--accent), 0 8px 24px rgba(124, 92, 255, .18); }
+.card .rating { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.card .btn.add { margin-top: 10px; width: 100%; background: var(--accent); border-color: var(--accent); color: #fff; }
+.card.in-cart .btn.add { background: #fff; color: var(--accent); }
+.card .btn.add:disabled { background: #e2e7f1; border-color: #e2e7f1; color: var(--ink-2); }
+
+/* ---------- loading / empty / error ---------- */
+.grid > .state { grid-column: 1 / -1; display: grid; gap: 8px; justify-items: center; }
+.state p { margin: 0; }
+.state-title { font-size: 18px; color: var(--ink); }
+.state.error .state-title { color: var(--bad); }
+
+/* ---------- sidebar ---------- */
+.sidebar { display: grid; gap: 16px; }
+.panel-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.panel-head h2 { margin: 0; }
+.pill { min-width: 28px; padding: 3px 10px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 700; text-align: center; font-size: 13px; }
+.btn.small { padding: 6px 12px; font-size: 13px; }
+
+/* ---------- cart lines (Session 3) ---------- */
+.cart-empty { margin: 0; color: var(--ink-2); font-size: 14px; }
+.cart-lines { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.cart-line { display: grid; grid-template-columns: 44px 1fr auto; gap: 10px; align-items: start; }
+.cart-line img { width: 44px; height: 44px; object-fit: contain; background: #eef1f7; border-radius: 10px; }
+.cart-line-main { display: grid; gap: 2px; min-width: 0; }
+.cart-line-title { font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cart-line-price { font-size: 12px; color: var(--ink-2); }
+.qty { display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; }
+.qty output { min-width: 20px; text-align: center; font-weight: 700; }
+.qty-btn, .remove-btn { width: 28px; height: 28px; border-radius: 8px; border: 1px solid #d5dbe8; background: #fff; font-weight: 700; line-height: 1; }
+.qty-btn:disabled { opacity: .4; cursor: not-allowed; }
+.remove-btn { border: 0; color: var(--ink-2); font-size: 18px; }
+.remove-btn:hover { color: var(--bad); }
+.cart-footer { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; margin-top: 14px; padding-top: 12px; border-top: 1px solid #e2e7f1; }
+.cart-subtotal { font-size: 20px; }
+.clear-btn { grid-column: 1 / -1; }
+
+/* ---------- the two logs ---------- */
+.sidebar .log { font-size: 12px; min-height: 120px; }
+.log-line { white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.6em; }
+.log-line.start { color: var(--muted-dark); }
+.log-line.ok { color: #4ade80; }
+.log-line.abort { color: #fbbf24; }
+.log-line.err { color: #f87171; }
+.log-line.retry { color: #c4b5fd; }
+.log-line.sync { color: var(--on-dark); }
+.log-line.micro { color: var(--react); }
+.log-line.task { color: var(--js); }
+.log-line.note { color: var(--muted-dark); }
+.legend { margin: 8px 0 0; font: 12px/1.4 var(--mono); display: flex; flex-wrap: wrap; gap: 10px; }
+.legend .start { color: var(--ink-2); }
+.legend .ok { color: var(--ok); }
+.legend .abort { color: var(--warn); }
+.legend .err { color: var(--bad); }

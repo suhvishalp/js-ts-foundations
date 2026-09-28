@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopScope Lite · Session 2 — Modern JavaScript (ES6+)</title>
+    <meta
+      name="description"
+      content="Session 2 of JS &amp; TS Foundations at Deesha Tech Academy: search, category filters, sorting and live stats for a product catalogue, built with destructuring, spread, array methods and ES modules."
+    />
+  </head>
+  <body>
+    <header class="session-header">
+      <div class="eyebrow">Session 2 · JS &amp; TS Foundations</div>
+      <h1>Modern JavaScript (ES6+)</h1>
+      <p>
+        Search, filter, sort and live stats for sixteen products, in a few lines of modern JavaScript: no
+        framework, no loops you have to babysit, and not one mutated array.
+      </p>
+      <div class="chips">
+        <span class="chip js">Destructuring</span>
+        <span class="chip js">Spread &amp; rest</span>
+        <span class="chip js">Array methods</span>
+        <span class="chip js">Set &amp; Map</span>
+        <span class="chip js">Modules</span>
+        <span class="chip js">?. and ??</span>
+      </div>
+    </header>
+
+    <main>
+      <p class="concept">
+        <strong>The idea:</strong> every control changes one <code>state</code> object, and one
+        <code>update()</code> function re-derives the whole page from it. That is exactly what React does, and the
+        state panel on the right shows it live.
+      </p>
+
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search title or brand…" aria-label="Search products" autocomplete="off" />
+        <select id="sort" aria-label="Sort products">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price ↑</option>
+          <option value="price-desc">Price ↓</option>
+          <option value="rating-desc">Rating</option>
+          <option value="discountPercentage-desc">Biggest discount</option>
+        </select>
+        <button id="reset" type="button" class="btn">Reset</button>
+        <span id="product-count" class="muted" aria-live="polite"></span>
+        <span id="wishlist-count" class="count">♥ 0 saved</span>
+      </div>
+      <div id="categories" class="category-chips" role="group" aria-label="Filter by category"></div>
+
+      <div class="layout">
+        <section id="grid" class="grid" aria-label="Products"></section>
+
+        <aside class="side">
+          <section class="panel" aria-labelledby="stats-title">
+            <h2 id="stats-title">Live stats</h2>
+            <dl id="stats" class="stats">
+              <div class="stat"><dt>Products shown</dt><dd>—</dd></div>
+              <div class="stat"><dt>Average rating</dt><dd>—</dd></div>
+              <div class="stat"><dt>Inventory value</dt><dd>—</dd></div>
+              <div class="stat"><dt>Best discount</dt><dd>—</dd></div>
+            </dl>
+            <p class="panel-hint">Every number is one <code>reduce()</code> over the products you can see.</p>
+          </section>
+
+          <section class="panel" aria-labelledby="state-title">
+            <h2 id="state-title">state</h2>
+            <pre id="state" class="log">Lab 5 prints the state object here.</pre>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

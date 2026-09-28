@@ -1,0 +1,37 @@
+/* Session 1 styles only. Tokens and shared components live in base.css. */
+
+.toolbar-title { margin: 0; font-size: 20px; letter-spacing: -.01em; }
+.muted { color: var(--ink-2); font-size: 14px; }
+.count { padding: 6px 12px; border-radius: 999px; background: #fff; border: 1px solid #d5dbe8; transition: color .2s, border-color .2s; }
+.count.has-items { color: var(--bad); border-color: rgba(220, 38, 38, .35); }
+
+/* cards */
+.card { transition: transform .15s ease, box-shadow .15s ease; }
+.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.card.is-out .thumb img { opacity: .45; filter: grayscale(1); }
+.card.is-saved { outline: 2px solid rgba(220, 38, 38, .35); }
+.card .rating { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.card .price { margin: 0; }
+.heart { transition: transform .15s ease; }
+.heart:hover { transform: scale(1.08); }
+.heart:active { transform: scale(.92); }
+.heart:focus-visible { outline: 3px solid rgba(124, 92, 255, .5); }
+
+/* playground panel */
+.playground { position: sticky; top: 16px; }
+.panel-hint { margin: 0 0 12px; color: var(--ink-2); font-size: 13px; }
+.playground-actions { display: flex; gap: 8px; margin-bottom: 12px; }
+.playground .log { max-height: 560px; }
+.playground .log:empty::before { content: "Click “Run experiments”."; color: var(--muted-dark); }
+.entry { padding: 6px 0 10px; border-bottom: 1px dashed rgba(148, 163, 184, .25); animation: entry-in .35s ease both; animation-delay: calc(var(--i, 0) * 70ms); }
+.entry:last-child { border-bottom: 0; }
+.entry-code { color: var(--js); }
+.entry-result { color: #86efac; font-weight: 700; }
+.entry-why { color: var(--muted-dark); font-size: 12px; }
+@keyframes entry-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 900px) { .playground { position: static; } }
+@media (prefers-reduced-motion: reduce) {
+  .entry { animation: none; }
+  .card, .heart { transition: none; }
+}

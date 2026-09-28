@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JavaScript & TypeScript Foundations · Deesha Tech Academy</title>
+  <meta name="description" content="A 5-day preparation track for React and Angular. Understand what JavaScript is, why it behaves the way it does, and how to use modern JavaScript and TypeScript with confidence." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <nav class="nav">
+      <span class="brand"><span class="logo">DT</span> Deesha Tech Academy</span>
+      <a class="nav-cta" href="https://deeshatechacademy.com" target="_blank" rel="noopener">deeshatechacademy.com</a>
+    </nav>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">5-day preparation track · React & Angular</p>
+        <h1>
+          <span class="js">JavaScript</span> &amp; <span class="ts">TypeScript</span><br />
+          Foundations
+        </h1>
+        <p class="lead">
+          Understand <strong>what</strong> JavaScript is, <strong>why</strong> it behaves the way it does,
+          and <strong>how</strong> to use modern JavaScript and TypeScript confidently in real
+          React and Angular projects.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="https://deeshatechacademy.com" target="_blank" rel="noopener">Register at deeshatechacademy.com</a>
+          <a class="btn ghost" href="#sessions">See the 5 sessions ↓</a>
+        </div>
+        <ul class="hero-stats">
+          <li><b>5</b><span>live sessions</span></li>
+          <li><b>23</b><span>hands-on labs</span></li>
+          <li><b>1</b><span>real app, built step by step</span></li>
+        </ul>
+      </div>
+
+      <div class="hero-code" aria-hidden="true">
+        <div class="window">
+          <div class="window-bar"><i></i><i></i><i></i><span>console</span></div>
+<pre><code><span class="c">// Day 1: guess before you run it</span>
+<span class="k">typeof</span> <span class="k">null</span>          <span class="c">// → </span><span class="s">"object"</span>
+<span class="n">0.1</span> + <span class="n">0.2</span> === <span class="n">0.3</span>   <span class="c">// → </span><span class="k">false</span>
+<span class="s">"5"</span> == <span class="n">5</span>            <span class="c">// → </span><span class="k">true</span>
+<span class="s">"5"</span> === <span class="n">5</span>           <span class="c">// → </span><span class="k">false</span>
+
+<span class="c">// Day 4: what prints first?</span>
+<span class="f">setTimeout</span>(() => <span class="f">log</span>(<span class="s">"timeout"</span>), <span class="n">0</span>)
+Promise.<span class="f">resolve</span>().<span class="f">then</span>(() => <span class="f">log</span>(<span class="s">"promise"</span>))
+<span class="f">log</span>(<span class="s">"sync"</span>)
+<span class="c">// → sync, promise, timeout</span>
+
+<span class="c">// Day 5: caught before it ships</span>
+<span class="k">type</span> <span class="t">State</span>&lt;<span class="t">T</span>&gt; =
+  | { status: <span class="s">"loading"</span> }
+  | { status: <span class="s">"success"</span>; data: <span class="t">T</span> }
+  | { status: <span class="s">"error"</span>; error: <span class="t">ApiError</span> }</code></pre>
+        </div>
+        <div class="float-chip js">ES6+</div>
+        <div class="float-chip ts">strict TS</div>
+        <div class="float-chip react">React</div>
+        <div class="float-chip angular">Angular</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ MISCONCEPTIONS ============ -->
+    <section class="section">
+      <p class="kicker">Clear the fog first</p>
+      <h2>Five things people get wrong about JavaScript</h2>
+      <div class="myths">
+        <article><s>JavaScript is a lighter version of Java.</s><p>They are unrelated languages. The name was a 1995 marketing decision.</p></article>
+        <article><s>JavaScript is only for small scripts on web pages.</s><p>It runs servers, mobile apps, desktop apps like VS Code, edge functions and AI tooling.</p></article>
+        <article><s>Single-threaded means slow and blocking.</s><p>The event loop lets one thread handle thousands of network requests without waiting on any of them.</p></article>
+        <article><s><code>const</code> means the value can't change.</s><p>The binding is constant. The object it points to can still change, which is why immutability matters in React.</p></article>
+        <article><s>TypeScript checks your data at runtime.</s><p>Types are erased when the code compiles. TypeScript protects you while you write, so you still validate data from the network.</p></article>
+      </div>
+    </section>
+
+    <!-- ============ WHERE JS RUNS ============ -->
+    <section class="section dark">
+      <p class="kicker">Why it's worth learning properly</p>
+      <h2>JavaScript runs almost everywhere</h2>
+      <div class="runs">
+        <div><span class="ico">🌐</span><b>Web frontends</b><small>React · Angular · Vue</small></div>
+        <div><span class="ico">🖥️</span><b>Servers & APIs</b><small>Node.js · Deno · Bun</small></div>
+        <div><span class="ico">📱</span><b>Mobile apps</b><small>React Native · Ionic</small></div>
+        <div><span class="ico">💻</span><b>Desktop apps</b><small>Electron: VS Code, Slack, Discord</small></div>
+        <div><span class="ico">⚡</span><b>Serverless & edge</b><small>AWS Lambda · Cloudflare Workers</small></div>
+        <div><span class="ico">🤖</span><b>AI applications</b><small>TensorFlow.js · LLM SDKs</small></div>
+        <div><span class="ico">🎮</span><b>Games & 3D</b><small>Three.js · Phaser</small></div>
+        <div><span class="ico">🛠️</span><b>Developer tooling</b><small>Vite · ESLint · browser extensions</small></div>
+      </div>
+    </section>
+
+    <!-- ============ SESSIONS ============ -->
+    <section class="section" id="sessions">
+      <p class="kicker">The track</p>
+      <h2>Five sessions, from “what is JavaScript?” to typed React and Angular code</h2>
+      <p class="sub">Sessions 1 and 2 build a solid base at a comfortable pace. Sessions 3 to 5 go deep, always in the context of React and Angular.</p>
+
+      <ol class="sessions">
+        <li class="session">
+          <div class="num">01</div>
+          <div class="meta"><span class="lvl beginner">Beginner</span></div>
+          <h3>JavaScript: What, Why &amp; How</h3>
+          <p>Engines and runtimes, types and values, functions, and the DOM. Common misconceptions are tested live in the console.</p>
+          <p class="build"><b>You build:</b> your first interactive product page with a wishlist.</p>
+          <div class="tags"><span>Engine & runtime</span><span>Types</span><span>DOM</span><span>Events</span></div>
+          <a href="sessions/01-javascript-what-why-how/">Open session →</a>
+        </li>
+        <li class="session">
+          <div class="num">02</div>
+          <div class="meta"><span class="lvl beginner">Beginner</span></div>
+          <h3>Modern JavaScript (ES6+)</h3>
+          <p>Destructuring, spread and rest, <code>?.</code> and <code>??</code>, array methods, Set and Map, and ES modules.</p>
+          <p class="build"><b>You build:</b> search, category filters, sorting and live stats.</p>
+          <div class="tags"><span>Destructuring</span><span>map · filter · reduce</span><span>Modules</span></div>
+          <a href="sessions/02-modern-javascript-es6/">Open session →</a>
+        </li>
+        <li class="session">
+          <div class="num">03</div>
+          <div class="meta"><span class="lvl advanced">Advanced</span><span class="fw react">React</span><span class="fw angular">Angular</span></div>
+          <h3>Functions, Closures, <code>this</code> &amp; Immutability</h3>
+          <p>The JavaScript that hooks and services are built on: closures, <code>this</code> binding, classes and reference equality.</p>
+          <p class="build"><b>You build:</b> a cart built twice, as a hook-style store and as an Angular-style service.</p>
+          <div class="tags"><span>Closures</span><span>Debounce</span><span>Classes</span><span>Immutability</span></div>
+          <a href="sessions/03-functions-closures-this-immutability/">Open session →</a>
+        </li>
+        <li class="session">
+          <div class="num">04</div>
+          <div class="meta"><span class="lvl advanced">Advanced</span><span class="fw react">React</span><span class="fw angular">Angular</span></div>
+          <h3>Async JavaScript &amp; the Event Loop</h3>
+          <p>The event loop, promises and async/await, fetch, AbortController, retries, and the mental model behind Observables.</p>
+          <p class="build"><b>You build:</b> a live product catalogue with cancellable search and a network log.</p>
+          <div class="tags"><span>Event loop</span><span>async/await</span><span>AbortController</span><span>Observables</span></div>
+          <a href="sessions/04-async-javascript-event-loop/">Open session →</a>
+        </li>
+        <li class="session">
+          <div class="num">05</div>
+          <div class="meta"><span class="lvl advanced">Advanced</span><span class="fw ts">TypeScript</span></div>
+          <h3>TypeScript for React &amp; Angular</h3>
+          <p>Inference, unions and narrowing, discriminated unions, generics, utility types and strict mode.</p>
+          <p class="build"><b>You build:</b> the live catalogue in strict TypeScript, plus typed React and Angular reference code.</p>
+          <div class="tags"><span>Generics</span><span>Narrowing</span><span>Utility types</span><span>Strict</span></div>
+          <a href="sessions/05-typescript-for-react-angular/">Open session →</a>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ HOW EACH SESSION WORKS ============ -->
+    <section class="section">
+      <p class="kicker">How you learn</p>
+      <h2>Every lab follows the same rhythm</h2>
+      <div class="rhythm">
+        <div><b>Problem</b><span>a real bug or need you can see</span></div>
+        <div><b>Concept</b><span>what, why and how, plus the misconceptions</span></div>
+        <div><b>Steps</b><span>exact TODOs in a runnable starter</span></div>
+        <div><b>Verify</b><span>see it work in the browser</span></div>
+        <div><b>In the real world</b><span>where it shows up in React and Angular</span></div>
+      </div>
+    </section>
+
+    <!-- ============ TRAINER + CTA ============ -->
+    <section class="section trainer">
+      <div class="trainer-card">
+        <div class="avatar">VS</div>
+        <div>
+          <p class="kicker">Your trainer</p>
+          <h3>Vishal Shah</h3>
+          <p class="role">Founder &amp; Principal Trainer, Deesha Tech Academy · 20 years in the industry</p>
+          <p>Vishal teaches the way engineers actually work. Every idea is shown running before it is explained, every bug is reproduced before it is fixed, and each concept is linked to the React and Angular code you'll write next.</p>
+        </div>
+      </div>
+      <div class="cta">
+        <h2>Start with the language. Then own the framework.</h2>
+        <p>This track prepares you for the React and Angular programs at Deesha Tech Academy.</p>
+        <a class="btn primary big" href="https://deeshatechacademy.com" target="_blank" rel="noopener">Register at deeshatechacademy.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © Deesha Tech Academy · <a href="https://deeshatechacademy.com" target="_blank" rel="noopener">deeshatechacademy.com</a>
+  </footer>
+</body>
+</html>

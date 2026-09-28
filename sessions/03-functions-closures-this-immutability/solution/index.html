@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Session 3 of JavaScript & TypeScript Foundations: closures, debounce, this and bind, classes and immutable updates, in a ShopScope Lite cart built twice, React-hook style and Angular-service style."
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%237c5cff%27/%3E%3C/svg%3E" />
+    <title>ShopScope Lite — cart &amp; store · Session 3</title>
+  </head>
+  <body>
+    <header class="session-header">
+      <div class="eyebrow">Session 3 · JS &amp; TS Foundations</div>
+      <h1>Functions, Closures, <code>this</code> &amp; Immutability</h1>
+      <p>One cart, built twice: as a closure-based store the way React hooks work, and as a class service the way Angular works.</p>
+      <div class="chips">
+        <span class="chip js">Closures</span>
+        <span class="chip js">Debounce</span>
+        <span class="chip js">this &amp; bind</span>
+        <span class="chip js">Classes</span>
+        <span class="chip js">Immutability</span>
+        <span class="chip react">React</span>
+        <span class="chip angular">Angular</span>
+      </div>
+    </header>
+
+    <main>
+      <p class="concept">
+        <strong>ShopScope Lite — cart &amp; store.</strong> Search waits until you pause typing (a closure-based
+        <code>debounce</code>). The cart runs on either implementation: switch between them in the panel and your lines
+        come with you. Every change logs a reference check.
+      </p>
+
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search products or brands" aria-label="Search products" autocomplete="off" />
+        <select id="sort" aria-label="Sort products">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="rating">Top rated</option>
+          <option value="title">Name A–Z</option>
+        </select>
+        <span id="count" class="count"></span>
+      </div>
+      <div id="chips" class="category-chips" role="group" aria-label="Filter by category"></div>
+      <p id="search-meter" class="meter" aria-live="polite"></p>
+
+      <div class="layout">
+        <section id="grid" class="grid" aria-label="Products"></section>
+
+        <aside class="sidebar">
+          <section class="panel cart-panel" aria-labelledby="cart-title">
+            <div class="panel-head">
+              <h2 id="cart-title">Cart</h2>
+              <span id="cart-count" class="pill" aria-label="Items in cart">0</span>
+            </div>
+
+            <div class="mode-toggle" role="group" aria-label="Cart implementation">
+              <button type="button" data-mode="closure" aria-pressed="true">
+                createCartStore<small>React-hook style</small>
+              </button>
+              <button type="button" data-mode="service" aria-pressed="false">
+                CartService<small>Angular service style</small>
+              </button>
+            </div>
+
+            <div id="cart" class="cart"></div>
+
+            <h3 class="ref-title">Reference check</h3>
+            <p id="ref-summary" class="ref-summary">prevLines === nextLines → <code>…</code></p>
+            <pre id="ref-log" class="log" aria-live="polite"></pre>
+            <button id="mutate" type="button" class="btn mutate-btn">Mutate in place (the wrong way)</button>
+          </section>
+
+          <section class="panel" aria-labelledby="stats-title">
+            <h2 id="stats-title">Stats</h2>
+            <dl id="stats" class="stats"></dl>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
