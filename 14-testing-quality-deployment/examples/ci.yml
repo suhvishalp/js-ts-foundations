@@ -1,0 +1,60 @@
+# examples/ci.yml
+# A complete GitHub Actions pipeline for a TypeScript AI project.
+# Copy to .github/workflows/ci.yml in your repo.
+#
+# Two jobs:
+#   1) `quality` runs on every push/PR — fast, fully mocked, no API keys.
+#   2) `evals`   runs on a schedule or manually — hits real models, uses a secret.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install (reproducible, lockfile-exact)
+        run: npm ci
+
+      - name: Type-check
+        run: npm run typecheck # tsc --noEmit
+
+      - name: Lint
+        run: npm run lint # eslint .
+
+      - name: Test (mocked, no network)
+        run: npm test # vitest run
+
+  # Real-model evaluation — deliberately NOT on every push.
+  evals:
+    runs-on: ubuntu-latest
+    # Run nightly at 06:00 UTC, or on demand from the Actions tab.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Run golden-set + LLM-as-judge evals
+        run: npm run eval
+        env:
+          # Stored under repo Settings → Secrets and variables → Actions.
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+# Add these triggers at the top-level `on:` block to enable the evals job:
+#   schedule:
+#     - cron: "0 6 * * *"
+#   workflow_dispatch:

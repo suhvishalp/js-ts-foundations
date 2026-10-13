@@ -1,0 +1,42 @@
+// A production-ready tsconfig for a Node 20+ ESM project, every option explained.
+// Copy to `tsconfig.json` (rename, drop nothing) and adjust as needed.
+{
+  "compilerOptions": {
+    // --- Output language level ---
+    "target": "ES2022",          // emit modern JS (async/await, ?., top-level await) as-is
+    "lib": ["ES2022"],           // ambient types available (add "DOM" for browser code)
+
+    // --- Module system + resolution ---
+    "module": "NodeNext",        // emit ESM/CJS per package.json "type"
+    "moduleResolution": "NodeNext", // resolve imports the way Node actually does
+    // ^ Under NodeNext, RELATIVE imports must include the emitted extension:
+    //   import { load } from "./dataset.js";  // even though the file is dataset.ts
+
+    // --- Where files come from and go ---
+    "rootDir": "src",            // source lives here
+    "outDir": "dist",            // compiled JS goes here (gitignore it)
+
+    // --- Safety (the whole point) ---
+    "strict": true,              // bundle: strictNullChecks, noImplicitAny, etc.
+    "noUncheckedIndexedAccess": true, // arr[i] is T | undefined — forces bounds thinking
+    "forceConsistentCasingInFileNames": true, // avoid Linux/macOS case bugs
+
+    // --- Interop + speed ---
+    "esModuleInterop": true,     // `import express from "express"` for CJS packages
+    "skipLibCheck": true,        // don't deep-check node_modules .d.ts files (faster)
+
+    // --- Emit extras ---
+    "declaration": true,         // emit .d.ts (needed if you publish a library)
+    "sourceMap": true,           // emit .js.map so stack traces point at .ts lines
+
+    // --- Import aliases (compile-time only!) ---
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]         // import "@/lib/vectors.js" instead of "../../lib/..."
+      // NOTE: tsc does NOT rewrite these at emit. Works with tsx/bundlers; for a
+      // plain `tsc` -> `node` pipeline you need a resolver like tsc-alias.
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
