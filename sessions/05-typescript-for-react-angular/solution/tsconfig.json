@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    /* What JavaScript comes out, and which built-in types exist (DOM for document, fetch, AbortController). */
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "useDefineForClassFields": true,
+    "skipLibCheck": true,
+
+    /* vite/client declares `import './style.css'` and import.meta.env. */
+    "types": ["vite/client"],
+
+    /* Let the bundler (Vite) resolve imports the way it really does: no file extensions needed. */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* The safety net. `strict` turns on the whole family: strictNullChecks, noImplicitAny,
+       useUnknownInCatchVariables and friends. `noUncheckedIndexedAccess` adds `| undefined`
+       to every `arr[i]` and `record[key]` read, because at runtime that value may not exist. */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "erasableSyntaxOnly": true
+  },
+  /* Only src/ is compiled. examples/ holds React and Angular reference files that need their frameworks. */
+  "include": ["src"]
+}

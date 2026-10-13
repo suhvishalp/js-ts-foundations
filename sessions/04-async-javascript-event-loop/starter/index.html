@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopScope Lite · Live catalogue · Session 4</title>
+    <meta
+      name="description"
+      content="Session 4 of JS & TS Foundations: a live product catalogue built with fetch, promises, async/await, AbortController, retries and a tiny Observable, plus an event-loop puzzle you can run."
+    />
+  </head>
+  <body>
+    <header class="session-header">
+      <div class="eyebrow">Session 4 · JS &amp; TS Foundations</div>
+      <h1>Async JavaScript &amp; the Event Loop</h1>
+      <p>
+        One thread, many things happening at once: see exactly how the event loop orders your code, then build a live
+        catalogue that loads, fails, retries and cancels like a production app.
+      </p>
+      <div class="chips">
+        <span class="chip js">Event loop</span>
+        <span class="chip js">Promises</span>
+        <span class="chip js">async/await</span>
+        <span class="chip js">fetch</span>
+        <span class="chip js">AbortController</span>
+        <span class="chip js">Observables</span>
+        <span class="chip react">React</span>
+        <span class="chip angular">Angular</span>
+      </div>
+    </header>
+
+    <main>
+      <p class="concept">
+        <strong>ShopScope Lite — live catalogue.</strong> Every product comes from <code>dummyjson.com</code>. Turn on
+        <strong>Slow network</strong>, type quickly, and watch the Network log: each new search cancels the one before it.
+      </p>
+
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search products" aria-label="Search products" autocomplete="off" />
+        <select id="category" aria-label="Category">
+          <option value="all">All categories</option>
+        </select>
+        <span id="count" class="count" aria-live="polite">Loading…</span>
+      </div>
+      <div class="toolbar network-controls" role="group" aria-label="Network simulation">
+        <label class="toggle"><input id="slow" type="checkbox" autocomplete="off" /> Slow network</label>
+        <label class="toggle"><input id="cancel-stale" type="checkbox" autocomplete="off" checked /> Cancel stale requests</label>
+        <label class="toggle"><input id="fail" type="checkbox" autocomplete="off" /> Break the API (503)</label>
+      </div>
+
+      <div class="layout">
+        <section id="grid" class="grid" aria-label="Products" aria-busy="true"></section>
+
+        <aside class="sidebar">
+          <section class="panel" aria-labelledby="cart-title">
+            <div class="panel-head">
+              <h2 id="cart-title">Cart</h2>
+              <span id="cart-count" class="pill" aria-label="Items in cart">0</span>
+            </div>
+            <div id="cart" class="cart"></div>
+          </section>
+
+          <section class="panel" aria-labelledby="netlog-title">
+            <div class="panel-head">
+              <h2 id="netlog-title">Network log</h2>
+              <button id="clear-log" type="button" class="btn small">Clear</button>
+            </div>
+            <div id="netlog" class="log" aria-live="polite"></div>
+            <p class="legend">
+              <span class="start">→ started</span>
+              <span class="ok">✓ success</span>
+              <span class="abort">✕ aborted</span>
+              <span class="err">! error</span>
+            </p>
+          </section>
+
+          <section class="panel" aria-labelledby="loop-title">
+            <div class="panel-head">
+              <h2 id="loop-title">Event loop order</h2>
+              <button id="run-loop" type="button" class="btn small primary">Run puzzle</button>
+            </div>
+            <div id="loop-log" class="log">Guess the order first, then press Run puzzle.</div>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

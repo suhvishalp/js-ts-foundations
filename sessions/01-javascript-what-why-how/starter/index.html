@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopScope Lite · Session 1 — JavaScript: What, Why &amp; How</title>
+    <meta
+      name="description"
+      content="Session 1 of JS &amp; TS Foundations at Deesha Tech Academy: a product page rendered from data with plain JavaScript, a hand-built wishlist, and a live playground that proves how JavaScript really behaves."
+    />
+  </head>
+  <body>
+    <header class="session-header">
+      <div class="eyebrow">Session 1 · JS &amp; TS Foundations</div>
+      <h1>JavaScript: What, Why &amp; How</h1>
+      <p>
+        Your first interactive product page: sixteen cards created from plain data, a wishlist kept in sync by hand,
+        and a playground that proves what JavaScript really does.
+      </p>
+      <div class="chips">
+        <span class="chip js">Engine &amp; runtime</span>
+        <span class="chip js">Types &amp; values</span>
+        <span class="chip js">Functions</span>
+        <span class="chip js">DOM</span>
+        <span class="chip js">Events</span>
+      </div>
+    </header>
+
+    <main>
+      <p class="concept">
+        <strong>The idea:</strong> this page's HTML ships an <em>empty</em> grid. Every card below is created by
+        JavaScript from an array of plain objects, and <strong>one</strong> click listener on the grid handles all
+        sixteen hearts.
+      </p>
+
+      <div class="layout">
+        <section aria-labelledby="catalogue-title">
+          <div class="toolbar">
+            <h2 id="catalogue-title" class="toolbar-title">ShopScope Lite</h2>
+            <span class="muted" id="product-count"></span>
+            <span class="count" id="wishlist-count" aria-live="polite">♥ 0 saved</span>
+          </div>
+          <div class="grid" id="grid"></div>
+        </section>
+
+        <aside class="panel playground" aria-labelledby="playground-title">
+          <h2 id="playground-title">JS Playground</h2>
+          <p class="panel-hint">Experiments that surprise almost everyone. Each result is real: your browser just ran it.</p>
+          <div class="playground-actions">
+            <button type="button" class="btn primary" id="run-playground">Run experiments</button>
+            <button type="button" class="btn" id="clear-playground">Clear</button>
+          </div>
+          <div class="log" id="log" aria-live="polite"></div>
+        </aside>
+      </div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

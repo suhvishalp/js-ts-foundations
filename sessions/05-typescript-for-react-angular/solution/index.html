@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopScope Lite — typed · Session 5 · TypeScript for React &amp; Angular</title>
+    <meta
+      name="description"
+      content="The ShopScope Lite live catalogue rewritten in strict TypeScript: discriminated request state, generic fetch and store, type guards and a typed DOM. Session 5 of JavaScript &amp; TypeScript Foundations by Deesha Tech Academy."
+    />
+  </head>
+  <body>
+    <header class="session-header">
+      <div class="eyebrow">Session 5 · JS &amp; TS Foundations</div>
+      <h1>TypeScript for React &amp; Angular</h1>
+      <p>The live catalogue from Session 4, rewritten in strict TypeScript, so the compiler catches the bugs before your users do.</p>
+      <div class="chips">
+        <span class="chip ts">Types &amp; inference</span>
+        <span class="chip ts">Unions &amp; narrowing</span>
+        <span class="chip ts">Generics</span>
+        <span class="chip ts">Utility types</span>
+        <span class="chip ts">Strict mode</span>
+        <span class="chip react">React</span>
+        <span class="chip angular">Angular</span>
+      </div>
+    </header>
+
+    <main>
+      <p class="concept">
+        <strong>ShopScope Lite — typed.</strong> The screen is one value of type
+        <code>RequestState&lt;Product[]&gt;</code>: <code>idle</code>, <code>loading</code>, <code>success</code> with
+        <code>data</code>, or <code>error</code> with an <code>ApiError</code>. The renderer handles every case, and the build
+        fails if one is ever missed.
+      </p>
+
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search products  ( / )" autocomplete="off" aria-label="Search products" />
+        <select id="category" aria-label="Category">
+          <option value="all">All categories</option>
+        </select>
+        <label class="toggle">
+          <input id="simulate-failure" type="checkbox" />
+          Simulate a failing API
+        </label>
+        <span id="count" class="count" aria-live="polite">Ready</span>
+      </div>
+
+      <div class="layout">
+        <section id="grid" class="grid" aria-label="Products"></section>
+
+        <aside class="side">
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Cart <span id="cart-count" class="pill">0</span></h2>
+              <button id="clear-cart" class="btn small" type="button" disabled>Clear</button>
+            </div>
+            <ul id="cart" class="cart"></ul>
+            <div class="cart-total"><span>Total</span><strong id="cart-total">$0.00</strong></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Network log</h2>
+              <button id="clear-log" class="btn small" type="button">Clear</button>
+            </div>
+            <div id="log" class="log" aria-live="polite"></div>
+          </section>
+
+          <section class="panel type-safety" aria-labelledby="ts-title">
+            <h2 id="ts-title">Type safety</h2>
+            <p class="ts-intro">Three bugs TypeScript caught in this app before it ever ran.</p>
+
+            <article class="ts-bug">
+              <h3>A typo in a state name</h3>
+              <pre><code>catalog.setState(() =&gt; ({ status: 'sucess', data }));</code></pre>
+              <p class="ts-error">TS2820: Type '"sucess"' is not assignable to type '"idle" | "loading" | "success" | "error"'. Did you mean '"success"'?</p>
+              <p class="ts-js"><strong>In plain JS:</strong> no error. The render switch matches nothing, and the page stays on skeletons forever.</p>
+            </article>
+
+            <article class="ts-bug">
+              <h3>A product that might not be there</h3>
+              <pre><code>const product = byId(state.data, id);
+product.price.toFixed(2);</code></pre>
+              <p class="ts-error">TS18048: 'product' is possibly 'undefined'.</p>
+              <p class="ts-js"><strong>In plain JS:</strong> "Cannot read properties of undefined (reading 'price')", the moment a stale button is clicked.</p>
+            </article>
+
+            <article class="ts-bug">
+              <h3>An element that might not exist</h3>
+              <pre><code>const input = document.querySelector('#search');
+input.value;</code></pre>
+              <p class="ts-error">TS18047: 'input' is possibly 'null'.<br />TS2339: Property 'value' does not exist on type 'Element'.</p>
+              <p class="ts-js"><strong>In plain JS:</strong> works until someone renames the id, then crashes on page load.</p>
+            </article>
+          </section>
+        </aside>
+      </div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
